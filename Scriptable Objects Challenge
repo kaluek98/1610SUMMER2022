@@ -34,3 +34,26 @@ public class FloatData : ScriptableObject
     }
 }
 
+using UnityEngine;
+
+[CreateAssetMenu]
+public class FloatData : ScriptableObject
+{
+    public float value;
+
+    public void UpdateValue(float num)
+    {
+        value += num;
+        Debug.Log(num);
+    }
+
+    public void ReplaceValue(float num)
+    {
+        value = num;
+        Debug.Log(num);
+    }
+
+
+}
+
+
