@@ -28,9 +28,9 @@ public class FloatData : ScriptableObject
         img.fillAmount = value;
     }
 
-    public void DisplayNumber(text txt)
+    public void DisplayNumber(Text txt)
     {
-        txt.text = value.Tostring();
+        txt.text = value.ToString();
     }
 }
 
