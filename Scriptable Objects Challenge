@@ -12,7 +12,7 @@ public class FloatData : ScriptableObject
 
     public void ReplaceValue(float num)
     {
-        value = number;
+        value = num;
     }
 
     public void DisplayImage(Image img)
