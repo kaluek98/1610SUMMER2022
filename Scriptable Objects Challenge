@@ -68,9 +68,9 @@ public class IntData : ScriptableObject
     value += num;
    }
 
-   public void ReplaceValue(int Number)
+   public void ReplaceValue(int num)
     {
-        value = number;
+        value = num;
     }
 
     public void DisplayNumber(Text txt)
@@ -80,6 +80,7 @@ public class IntData : ScriptableObject
     
 
 }
+
 
 
 
