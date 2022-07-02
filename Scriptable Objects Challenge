@@ -56,4 +56,30 @@ public class FloatData : ScriptableObject
 
 }
 
+using UnityEngine;
+
+[CreateAssetMenu]
+public class IntData : ScriptableObject
+{
+   public int value;
+
+   public void UpdateValue(int num)
+   {
+    value += num;
+   }
+
+   public void ReplaceValue(int Number)
+    {
+        value = number;
+    }
+
+    public void DisplayNumber(Text txt)
+    {
+        txt.text = value.ToString();
+    }
+    
+
+}
+
+
 
