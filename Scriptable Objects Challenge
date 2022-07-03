@@ -1,0 +1,109 @@
+using UnityEngine;
+
+[CreateAssetMenu]
+public class FloatData : ScriptableObject
+{
+    public float value;
+
+    public void UpdateValue(float num)
+    {
+        value += num;
+    }
+
+    public void ReplaceValue(float num)
+    {
+        value = num;
+    }
+
+    public void DisplayImage(Image img)
+    {
+        if (value <= 0)
+        {
+            onZeroEvent.Invoke();
+        } else if (value >= 1)
+        {
+            value = 1;
+        }
+
+        img.fillAmount = value;
+    }
+
+    public void DisplayNumber(Text txt)
+    {
+        txt.text = value.ToString();
+    }
+}
+
+using UnityEngine;
+
+[CreateAssetMenu]
+public class FloatData : ScriptableObject
+{
+    public float value;
+
+    public void UpdateValue(float num)
+    {
+        value += num;
+        Debug.Log(num);
+    }
+
+    public void ReplaceValue(float num)
+    {
+        value = num;
+        Debug.Log(num);
+    }
+
+
+}
+
+using UnityEngine;
+
+[CreateAssetMenu]
+public class IntData : ScriptableObject
+{
+   public int value;
+
+   public void UpdateValue(int num)
+   {
+    value += num;
+   }
+
+   public void ReplaceValue(int num)
+    {
+        value = num;
+    }
+
+    public void DisplayNumber(Text txt)
+    {
+        txt.text = value.ToString();
+    }
+    
+
+}
+
+//my own ScriptableObject
+
+using UnityEngine;
+
+
+[CreateAssetMenu]
+public class Stringdata : ScriptableObject
+{
+    public string tag;
+
+    public string car;
+
+    public string hobby;
+
+    public int[] eyecolor = new int[4];
+
+    public void UpdateString(string name)
+    {
+        car = name;
+    }
+
+}
+
+
+
+
