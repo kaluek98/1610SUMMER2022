@@ -719,7 +719,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 912ae63cc35ea4028928e2511f0c0905, type: 2}
         m_TargetAssemblyTypeName: FloatData, Assembly-CSharp
-        m_MethodName: UpdateValue
+        m_MethodName: ReplaceValue
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

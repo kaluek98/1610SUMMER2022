@@ -12,24 +12,8 @@ public class FloatData : ScriptableObject
 
     public void ReplaceValue(float num)
     {
-        value = number;
+        value = num;
     }
 
-    public void DisplayImage(Image img)
-    {
-        if (value <= 0)
-        {
-            onZeroEvent.Invoke();
-        } else if (value >= 1)
-        {
-            value = 1;
-        }
 
-        img.fillAmount = value;
-    }
-
-    public void DisplayNumber(text txt)
-    {
-        txt.text = value.Tostring();
-    }
 }
