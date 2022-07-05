@@ -15,5 +15,10 @@ public class FloatData : ScriptableObject
         value = num;
     }
 
+    public void SetValue(float num)
+    {
+        value = num;
+    }
+
 
 }
