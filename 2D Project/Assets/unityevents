@@ -20,4 +20,52 @@ public class MonoEventsBehavior : MonoBehaviour
         disableEvent.Invoke();
     }
 
+ //Fixed Errors
+ 
+ using UnityEngine;
+using UnityEngine.Events;
+
+public class MonoEventsBehavior : MonoBehaviour
+{
+    public UnityEvent startEvent, awakeEvent, disableEvent;
+    
+    private void Awake()
+    {
+     awakeEvent.Invoke();   
+    }
+    private void Start()
+    {
+        startEvent.Invoke();
+    }
+    private void Disable()
+    {
+        disableEvent.Invoke();
+    }
+}
+
+using UnityEngine;
+
+[CreateAssetMenu]
+public class FloatData : ScriptableObject
+{
+    public float value;
+
+    public void UpdateValue(float num)
+    {
+        value += num;
+    }
+
+    public void ReplaceValue(float num)
+    {
+        value = num;
+    }
+
+    public void SetValue(float num)
+    {
+        value = num;
+    }
+
+
+}
+
  
