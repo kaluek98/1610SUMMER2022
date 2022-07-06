@@ -68,4 +68,26 @@ public class FloatData : ScriptableObject
 
 }
 
+ // challenge
  
+ using UnityEngine;
+using UnityEngine.Events;
+
+public class MoreMonoEvents : MonoBehaviour
+{
+    public UnityEvent collisionEvent, mousehoverEvent, mouseclickEvent;
+
+    private void OnTriggerEnter()
+    {
+        collisionEvent.Invoke();
+    }
+     private void OnMouseOver()
+    {
+        mousehoverEvent.Invoke();
+    }
+     private void OnMouseUpAsButton()
+    {
+        mouseclickEvent.Invoke();
+    }
+}
+
