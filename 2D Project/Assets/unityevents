@@ -92,3 +92,29 @@ public class MoreMonoEvents : MonoBehaviour
 }
 
 //updated challenge code, used hovering mouse to cause labels to appear and disappear over objects and trigger partical effects
+
+using UnityEngine;
+using UnityEngine.Events;
+
+public class MoreMonoEvents : MonoBehaviour
+{
+    public UnityEvent collisionEvent, mousehoverEvent, mousehoverOffEvent, mouseclickEvent;
+
+    private void OnTriggerEnter()
+    {
+        collisionEvent.Invoke();
+    }
+     private void OnMouseOver()
+    {
+        mousehoverEvent.Invoke();
+    }
+    private void OnMouseExit()
+    {
+        mousehoverOffEvent.Invoke();
+    }
+     private void OnMouseUpAsButton()
+    {
+        mouseclickEvent.Invoke();
+    }
+}
+
