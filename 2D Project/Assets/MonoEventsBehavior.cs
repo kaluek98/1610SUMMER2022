@@ -13,7 +13,7 @@ public class MonoEventsBehavior : MonoBehaviour
     {
         startEvent.Invoke();
     }
-    private void Disable()
+    private void OnDisable()
     {
         disableEvent.Invoke();
     }
