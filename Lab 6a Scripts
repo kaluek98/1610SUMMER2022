@@ -1,0 +1,88 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float horizontalInput;
+    public float speed;
+    
+    public float xRange;
+
+    public Transform blaster;
+    
+    public GameObject lazerBolt;
+
+    
+    void Update()
+    {
+        //Set HorizontalImput to recieve values from horizontal keys
+        horizontalInput = Input.GetAxis("Horizontal");
+        // Moves Player left and right
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        //keep player bound left
+        if(transform.position.x < -xRange )
+        {
+            transform.position = new Vector3(-xRange,transform.position.y,transform.position.z);
+        }
+        //keep player bound right
+        if(transform.position.x > xRange )
+        {
+            transform.position = new Vector3(xRange,transform.position.y,transform.position.z);
+        }
+        //If space bar is pressed fire lazerBolt
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //create lazerBold at the blaster transform position maintaining the objects rotation
+            Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation);
+        }
+    }
+//delete any object with a trigger that hits player
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+    }
+}
+
+using UnityEngine;
+
+public class MoveForward : MonoBehaviour
+{
+    
+   public float speed = 50.0f;
+
+    // Update is called once per frame
+    void Update()
+    {
+        //move game object forward
+       transform.Translate(Vector3.forward * Time.deltaTime*speed); 
+    }
+}
+
+using UnityEngine;
+
+public class DestroyOutOfBounds : MonoBehaviour
+{
+    public float topBounds = 30.0f;
+    public float lowerBounds = -20.0f;
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        //Time.timeScale = 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(transform.position.z > topBounds)
+        {
+            Destroy(gameObject);
+        }
+        else if(transform.position.z <  lowerBounds)
+        {
+            Debug.Log("Game Over!");
+            Destroy(gameObject);
+            //Time.timeScale = 0;
+        }
+    }
+}
+
