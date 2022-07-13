@@ -86,3 +86,83 @@ public class DestroyOutOfBounds : MonoBehaviour
     }
 }
 
+//Challenge
+
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float horizontalInput;
+    public float speed;
+    public float itemAmount = 0 ;
+    
+    public float xRange;
+
+    public Transform blaster;
+    
+    public GameObject lazerBolt;
+
+    
+    void Update()
+    {
+        //Set HorizontalImput to recieve values from horizontal keys
+        horizontalInput = Input.GetAxis("Horizontal");
+        // Moves Player left and right
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
+        //keep player bound left
+        if(transform.position.x < -xRange )
+        {
+            transform.position = new Vector3(-xRange,transform.position.y,transform.position.z);
+        }
+        //keep player bound right
+        if(transform.position.x > xRange )
+        {
+            transform.position = new Vector3(xRange,transform.position.y,transform.position.z);
+        }
+        //If space bar is pressed fire lazerBolt
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //create lazerBold at the blaster transform position maintaining the objects rotation
+            Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation);
+        }
+
+    }
+    //added to count the power ups which are tagged as good
+    private void OnTriggerEnter (Collider theCollision)
+    {
+        if (theCollision.gameObject.tag == "GoodItem")
+        {
+            Debug.Log("+1 item");
+            Destroy(theCollision.gameObject);
+            itemAmount++;
+        }
+
+        else 
+        {
+            Debug.Log("hit working");
+            Destroy(theCollision.gameObject);
+        }
+    }
+
+}
+
+//powerup movement script
+
+using UnityEngine;
+
+public class MoveBackward : MonoBehaviour
+{
+    
+   public float speed = 50.0f;
+
+    
+    void Update()
+    {
+        //move game object backward
+       transform.Translate(Vector3.back * Time.deltaTime*speed); 
+       
+    }
+
+}
+
+
