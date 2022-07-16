@@ -56,3 +56,61 @@ public class EnemySpawnManager : MonoBehaviour
     }
 }
  // finished lab
+ 
+ using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DetectCollision : MonoBehaviour
+{
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        Destroy(other.gameObject);
+    }
+}
+
+//created higher health motherships
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DetectCollisionStrong : MonoBehaviour
+{
+    private int Hp = 18;
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+        Hp --; 
+        if(Hp<=0)
+        { 
+        Destroy(gameObject);
+        }
+       
+        
+    }
+}
+
+//created normal ufo health
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DetectCollisionMid : MonoBehaviour
+{
+    private int Hp = 4;
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+        Hp --; 
+        if(Hp<=0)
+        { 
+        Destroy(gameObject);
+        }
+       
+        
+    }
+}
+
