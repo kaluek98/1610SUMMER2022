@@ -10,5 +10,7 @@ public class MoveForward : MonoBehaviour
     {
         //move game object forward
        transform.Translate(Vector3.forward * Time.deltaTime*speed); 
+       
     }
+
 }

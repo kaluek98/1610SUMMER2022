@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
     public float speed;
+    public float itemAmount = 0 ;
     
     public float xRange;
 
@@ -34,10 +35,22 @@ public class PlayerController : MonoBehaviour
             //create lazerBold at the blaster transform position maintaining the objects rotation
             Instantiate(lazerBolt, blaster.transform.position, lazerBolt.transform.rotation);
         }
+
     }
-//delete any object with a trigger that hits player
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter (Collider theCollision)
     {
-        Destroy(other.gameObject);
+        if (theCollision.gameObject.tag == "GoodItem")
+        {
+            Debug.Log("+1 item");
+            Destroy(theCollision.gameObject);
+            itemAmount++;
+        }
+
+        else 
+        {
+            Debug.Log("hit working");
+            Destroy(theCollision.gameObject);
+        }
     }
+
 }
