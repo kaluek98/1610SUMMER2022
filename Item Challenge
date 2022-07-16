@@ -1,0 +1,47 @@
+using UnityEngine;
+
+public class ItemSpawnerManager : MonoBehaviour
+{
+    public GameObject[] itemPrefabs; //Array to store items ships
+    
+    private float spawnRangeX = 22f;
+    private float spawnPosZ = 20f;
+    private float startDelay = 5f;
+    private float spawnInterval = 6.5f;
+
+   void Start()
+    {
+        InvokeRepeating("SpawnRandomItem", startDelay, spawnInterval);
+    }
+
+
+    
+    void Update()
+    {
+        
+    }
+
+    void SpawnRandomItem()
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX,spawnRangeX),0,spawnPosZ);
+            int itemIndex = Random.Range(0,itemPrefabs.Length);
+            Instantiate(itemPrefabs[itemIndex],spawnPos, itemPrefabs[itemIndex].transform.rotation);
+        }
+}
+//so it is counted 
+private void OnTriggerEnter (Collider theCollision)
+    {
+        if (theCollision.gameObject.tag == "GoodItem")
+        {
+            Debug.Log("+1 item");
+            Destroy(theCollision.gameObject);
+            itemAmount++;
+        }
+
+        else 
+        {
+            Debug.Log("hit working");
+            Destroy(theCollision.gameObject);
+        }
+    }
+// item has a glowing halo and emits light if the item reaches out of bounds it is destroyed and if it is failed to get collected the game ends
