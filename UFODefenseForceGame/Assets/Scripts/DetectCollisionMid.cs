@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class DetectCollisionMid : MonoBehaviour
 {
-    private int Hp = 4;
+    public ScoreManager scoreManager; //Store reference to score manager
+    public int scoreToGive;
+    private int Hp = 8;
+
+     void Start()
+    {
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>(); // find ScoreManager gameobject and refrence ScoreManager script component
+    }
     void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
@@ -12,6 +19,7 @@ public class DetectCollisionMid : MonoBehaviour
         if(Hp<=0)
         { 
         Destroy(gameObject);
+        scoreManager.IncreaseScore(scoreToGive); // increase score
         }
        
         

@@ -7,7 +7,7 @@ public class EnemySpawnManager : MonoBehaviour
     private float spawnRangeX = 22f;
     private float spawnPosZ = 20f;
     private float startDelay = 1f;
-    private float spawnInterval = 4f;
+    private float spawnInterval = 2f;
     
     void Start()
     {
